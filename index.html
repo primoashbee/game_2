@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>GUeSS the NuMbeR</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+		<style>
+		#mydiv {  
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:grey;
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+
+</style>
+		
+	</head>
+	<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" rel="home" href="#">SurPRiSe</a>
+	</div>
+	
+	<div class="collapse navbar-collapse">
+		
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+	    
+                <li class="divider"></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal1">Leader Board</a></li>
+                <li class="divider"></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal2">About</a></li>
+              </ul>
+            </li>
+		</ul>
+		
+		
+	</div>
+</div>
+
+<div class="form-group">
+<div class="container">
+  
+  <div class="text-center">
+         <h1>Welcome to my Guessing Game!</h1>
+        <p class="lead">This game will test how many times you can<br />
+        correctly guess a random number between 1 and 10.<br />
+        </p>
+
+        <p class="lead" id="instructions">
+		<h1>Instructions:</h1>
+           
+                First, you will type a number between 0 and 10 into the box below<br />
+                Second, click on the Submit button<br />
+                When you are ready to reset the game, press the Reset button<br />
+            
+        </p>
+
+        <p>
+            <center><label class="textbox-inline">
+            <input id= "guess" type="text" class="form-control"><br />
+            <button  class="btn btn-primary" id="btnGuess" > Guess </button>
+            <button  class="btn btn-warning" id="btnReset" > Reset </button>
+        
+            <p class="lead">
+                It took you
+				<input id="winner" type="text" class="form-control" size="1" />
+				<label class="textbox-inline">times to guess correctly!</label>
+                
+                
+            </p></center>
+            
+        </p>
+</div>
+</div>
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="mdlSend" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Send Information</h4>
+        </div>
+        <div class="modal-body">
+		<div id="mydiv">
+			<img src="loader.gif" class="ajax-loader"/>
+		</div>
+          <h3 id="output"></h3>
+          <h3 id="hulas"></h3>
+          
+		  <p>Enter your Name</p>
+		  <input type ="text" id="txtname" placeholder="Name" class="form-control"/>
+		  <br>
+		  <button id="btnSend" class="btn btn-success">Send</button>
+		  <button id="btnCancel" class="btn btn-warning">Dont Send</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Leader Board</h4>
+        </div>
+			
+        <div class="modal-body">
+		<div id="mydiv2">
+			<img src="loader.gif" class="ajax-loader"/>
+		</div>
+		<h1><center>TOP <strong> 5 </strong></center></h1>
+		<table class="table table-striped">
+		<tr><thead><th>Name</th><th>Attempts</th>
+		<tbody id="scoreboard">
+		</tbody>
+		</table>
+		
+		
+		</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+ <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">About</h4>
+        </div>
+        <div class="modal-body">
+          <p>IM malate</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+	
+<!-- /.container -->
+	<!-- script references -->
+		
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	<script language ="javascript">
+		var theNumber;
+		var counter;
+		
+		$(function(){
+        gameReset();
+		$('#mydiv').hide(); 
+		$('#mydiv2').hide(); 
+		})
+		function gameReset(){
+		theNumber = Math.floor(Math.random()*10+1);
+        numGuesses = 0;
+		counter=0;
+		$('#guess').html('');
+		}
+		
+		function hula(sagot){
+		if(sagot==theNumber){
+		return "Tama"	
+		}else if(sagot<theNumber){
+		return "Higher"
+		}else{
+		return "Lower"
+		}
+		}
+		$('#mdlSend').on('hidden.bs.modal',function (){
+		gameReset();
+		})
+		$('#btnGuess').click(function(){
+		var res = hula(parseInt($('#guess').val()));
+		if(res=="Tama"){
+		$('#guess').val('');
+		alert('Game Won')
+		$('#mdlSend').modal('show');
+		$('#output').html('The number is : '+theNumber);
+		$('#hulas').html('Attempts:  '+counter);
+		
+
+		}else{
+		counter++
+		alert('Wrong Answer');
+		
+		$('#winner').val(counter);
+		}
+		})
+		$('#btnSend').click(function(){
+			if($('#txtname').val()==""){
+			
+			}else{
+			sendInfo($('#txtname').val(),counter);
+			
+			}
+		})
+		
+		function sendInfo(x,y){
+		$('#mydiv').show(); 
+		
+		$.ajax({
+			url:'http://www.gcccs.org/malats/send.php',
+			type:'POST',
+			dataType:'JSON',
+			data:{NAME:x,GUESSES:y},
+			success:function(data){
+			console.log(data.MSG);
+			$('#mdlSend').modal('hide');
+			$('#myModal1').modal('show');
+			},
+			complete:function(){
+			
+			$('#mydiv').hide(); 
+		}
+		})
+		}
+		//function showScores(){
+		$('#myModal1').on('shown.bs.modal',function(){
+			$('#mydiv2').show(); 
+					$.ajax({
+			url:'http://www.gcccs.org/malats/score.php',
+			type:'POST',
+			dataType:'JSON',
+			data:{},
+			success:function(data){
+			$('#scoreboard').empty();
+			console.log(data);
+			$.each(data.SCORES,function(k,v){
+			$('#scoreboard').append('<tr><td>'+v.NAME+'</td><td>'+v.SCORE+'</tr>');
+			})
+			},
+			complete:function(){
+				$('#mydiv2').hide(); 
+			}
+		})
+
+		//})
+		})
+	   </script>
+		
+	</body>
+</html>
